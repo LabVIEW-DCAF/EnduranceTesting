@@ -24,24 +24,23 @@ node("proto"){
     stage ('Temp Directories'){
         bat 'mkdir build_temp'
     }
-    stage('cRIO EXE'){
-        lvBuild("Automated Builds Project\\All Module Integration Test.lvproj", "cRIO9076", "", "2014")
-    }
-    // stage ('RT Tests'){
-        // def config_file = "RT_Exec_Timing.pcfg"
-        // def target_ip = "10.0.18.181"
-        // def logfile = "logfile.tdms"
-        // def logfile_path = "/home/lvuser/dcaf/${logfile}"
-        // def user = "admin"
-        // // Deploy config file
-        // bat "echo y | pscp -pw  ${RIO_PASSWORD} ${WORKSPACE}\\RT-Test\\${config_file} ${user}@${target_ip}:/home/lvuser/${config_file}"
-        // // delete log directory
-        // bat "echo y | plink -pw ${RIO_PASSWORD} ${user}@${target_ip} rm -r -f /home/lvuser/dcaf"
-        // // Run DCAF
-        // bat "labview-cli --kill --lv-ver 2014 ${WORKSPACE}\\RT-Test\\Execute-RT-9068-Benchmarking.vi -- ${WORKSPACE} RT-Test\\DCAF-RT-Performance-Test.lvproj 9068-Main.vi cRIO home:\\lvuser\\${config_file} 60 ${target_ip}"
-        // bat "echo y | pscp -pw ${RIO_PASSWORD} ${user}@${target_ip}:${logfile_path} ${WORKSPACE}\\${logfile}"
-        // bat "labview-cli --kill --lv-ver 2014 \"${WORKSPACE}\\utilities\\Timing Report.vi\" -- \"${WORKSPACE}\" ${logfile} build_temp rt_exec_time.json ${BUILD_NUMBER} RT_Exec_Test"
+    // stage('cRIO Build EXE'){
+        // lvBuild("Automated Builds Project\\All Module Integration Test.lvproj", "cRIO9076", "", "2014")
     // }
+    stage ('RT Tests'){
+        def config_file = "Integration Testing Configuration.pcfg"
+        def target_ip = "10.0.54.150"
+        def logfile = "logfile.tdms"
+        def logfile_path = "/home/lvuser/dcaf/${logfile}"
+        def user = "admin"
+        // Deploy config file
+        bat "echo y | pscp -pw  ${RIO_PASSWORD} ${WORKSPACE}\\Automated Builds Project\\${config_file} ${user}@${target_ip}:/home/lvuser/${config_file}"
+        // delete log directory
+        bat "echo y | plink -pw ${RIO_PASSWORD} ${user}@${target_ip} rm -r -f /home/lvuser/dcaf"
+        // Run DCAF
+        bat "labview-cli --kill --lv-ver 2014 ${WORKSPACE}\\Automated Builds Project\\Execute-Endurance-Testing.vi -- ${WORKSPACE} Automated Builds Project\\All Module Integration Test.lvproj cRIO All Modules Main.vi cRIO home:\\lvuser\\${config_file} 60 ${target_ip}"
+        bat "echo y | pscp -pw ${RIO_PASSWORD} ${user}@${target_ip}:${logfile_path} ${WORKSPACE}\\${logfile}"
+    }
     stage ('Post-Clean'){
         postClean()
     }
