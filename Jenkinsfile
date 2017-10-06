@@ -24,9 +24,9 @@ node("proto"){
     stage ('Temp Directories'){
         bat 'mkdir build_temp'
     }
-    // stage('cRIO Build EXE'){
-        // lvBuild("Automated_Builds_Project\\Endurance_Test.lvproj", "cRIO9068", "", "2014")
-    // }
+    stage('cRIO Build EXE'){
+        lvBuild("Automated_Builds_Project\\Endurance_Test.lvproj", "cRIO9068", "", "2014")
+    }
     stage ('RT Tests'){
         def config_file = "Endurance_Testing_Configuration.pcfg"
         def target_ip = "10.0.54.158"
