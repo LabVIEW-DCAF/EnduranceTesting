@@ -20,7 +20,7 @@
 		<Property Name="server.vi.callsEnabled" Type="Bool">true</Property>
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
-		<Item Name="Execute-Endurance-Test.vi" Type="VI" URL="../Execute-Endurance-Test.vi"/>
+		<Item Name="Execute_Endurance_Test.vi" Type="VI" URL="../Execute_Endurance_Test.vi"/>
 		<Item Name="Invoke RT VI.vi" Type="VI" URL="../Invoke RT VI.vi"/>
 		<Item Name="Run RT VI in project.vi" Type="VI" URL="../Run RT VI in project.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
@@ -180,13 +180,13 @@ AddOutputFilter chunkFilter
 		<Property Name="target.WebServer.ViAccess" Type="Str">+*</Property>
 		<Property Name="target.webservices.SecurityAPIKey" Type="Str">PqVr/ifkAQh+lVrdPIykXlFvg12GhhQFR8H9cUhphgg=:pTe9HRlQuMfJxAG6QCGq7UvoUpJzAzWGKy5SbZ+roSU=</Property>
 		<Property Name="target.webservices.ValidTimestampWindow" Type="Int">15</Property>
+		<Item Name="9068_Includes.vi" Type="VI" URL="../9068_Includes.vi"/>
+		<Item Name="9068_Main.vi" Type="VI" URL="../9068_Main.vi"/>
 		<Item Name="Chassis" Type="cRIO Chassis">
 			<Property Name="crio.ProgrammingMode" Type="Str">express</Property>
 			<Property Name="crio.ResourceID" Type="Str">RIO0</Property>
 			<Property Name="crio.Type" Type="Str">cRIO-9068</Property>
 		</Item>
-		<Item Name="cRIO All Modules Includes.vi" Type="VI" URL="../cRIO All Modules Includes.vi"/>
-		<Item Name="cRIO All Modules Main.vi" Type="VI" URL="../cRIO All Modules Main.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="vi.lib" Type="Folder">
 				<Item Name="API Main.lvlib" Type="Library" URL="/&lt;vilib&gt;/NI/Modbus Library/API/Wrapper/API Main.lvlib"/>
@@ -316,6 +316,7 @@ AddOutputFilter chunkFilter
 				<Item Name="worker pool.lvlib" Type="Library" URL="/&lt;vilib&gt;/NI/DCAF/Engines/Standard Engine/Execution Engine/worker library/worker pool.lvlib"/>
 				<Item Name="write syslog.vi" Type="VI" URL="/&lt;vilib&gt;/NI/Syslog Wrapper - Linux/write syslog.vi"/>
 			</Item>
+			<Item Name="cRIO All Modules Includes.vi" Type="VI" URL="../cRIO All Modules Includes.vi"/>
 			<Item Name="lvalarms.dll" Type="Document" URL="lvalarms.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
