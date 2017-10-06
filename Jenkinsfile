@@ -28,7 +28,7 @@ node("proto"){
         // lvBuild("Automated Builds Project\\All Module Integration Test.lvproj", "cRIO9068", "", "2014")
     // }
     stage ('RT Tests'){
-        def config_file = "Integration Testing Configuration.pcfg"
+        def config_file = "Endurance-Testing-Configuration.pcfg"
         def target_ip = "10.0.54.158"
         def logfile = "logfile.tdms"
         def logfile_path = "/home/lvuser/dcaf/${logfile}"
