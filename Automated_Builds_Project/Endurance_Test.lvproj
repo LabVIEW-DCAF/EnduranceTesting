@@ -316,7 +316,6 @@ AddOutputFilter chunkFilter
 				<Item Name="worker pool.lvlib" Type="Library" URL="/&lt;vilib&gt;/NI/DCAF/Engines/Standard Engine/Execution Engine/worker library/worker pool.lvlib"/>
 				<Item Name="write syslog.vi" Type="VI" URL="/&lt;vilib&gt;/NI/Syslog Wrapper - Linux/write syslog.vi"/>
 			</Item>
-			<Item Name="cRIO All Modules Includes.vi" Type="VI" URL="../cRIO All Modules Includes.vi"/>
 			<Item Name="lvalarms.dll" Type="Document" URL="lvalarms.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
