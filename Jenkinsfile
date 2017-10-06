@@ -38,7 +38,7 @@ node("proto"){
         // delete log directory
         bat "echo y | plink -pw ${RIO_PASSWORD} ${user}@${target_ip} rm -r -f /home/lvuser/dcaf"
         // Run DCAF
-        bat "labview-cli --kill --lv-ver 2014 ${WORKSPACE}\\Automated_Builds_Project\\Execute-Endurance-Testing.vi -- ${WORKSPACE} Automated_Builds_Project\\All Module Integration Test.lvproj cRIO All Modules Main.vi cRIO home:\\lvuser\\${config_file} 60 ${target_ip}"
+        bat "labview-cli --kill --lv-ver 2014 ${WORKSPACE}\\Automated_Builds_Project\\Execute-Endurance-Test.vi -- ${WORKSPACE} Automated_Builds_Project\\All Module Integration Test.lvproj cRIO All Modules Main.vi cRIO home:\\lvuser\\${config_file} 60 ${target_ip}"
         bat "echo y | pscp -pw ${RIO_PASSWORD} ${user}@${target_ip}:${logfile_path} ${WORKSPACE}\\${logfile}"
     }
     stage ('Post-Clean'){
