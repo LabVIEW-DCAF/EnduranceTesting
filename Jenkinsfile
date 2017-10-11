@@ -30,7 +30,8 @@ node("endurance"){
     stage ('RT Tests'){
         def config_file = "Endurance_Testing_Configuration.pcfg"
         def target_ip = "10.0.54.158"
-        def logfile = "logfile.tdms"
+		// This gets a .1 appended to whatever name you request after it's saved.
+        def logfile = "logfile.1.tdms"
         def logfile_path = "/home/lvuser/dcaf/${logfile}"
         def user = "admin"
         def target_alias = "cRIO9068"
@@ -41,7 +42,7 @@ node("endurance"){
         bat "echo y | plink -pw ${RIO_PASSWORD} ${user}@${target_ip} rm -r -f /home/lvuser/dcaf"
         // Run DCAF
         bat "labview-cli --kill --lv-ver 2014 ${WORKSPACE}\\Automated_Builds_Project\\Execute_Endurance_Test.vi -- ${WORKSPACE} Automated_Builds_Project\\Endurance_Test.lvproj 9068_Main.vi ${target_alias} home:\\lvuser\\${config_file} ${runtime_in_minutes} ${target_ip}"
-        bat "echo y | pscp -pw ${RIO_PASSWORD} ${user}@${target_ip}:${logfile_path} ${WORKSPACE}\\${logfile}"
+        bat "echo y | pscp -pw ${RIO_PASSWORD} ${user}@${target_ip}:${logfile_path} ${WORKSPACE}\\logfile.tdms"
     }
     stage ('Post-Clean'){
         postClean()
