@@ -2,7 +2,7 @@
 
 echo 'Starting pipeline'
 
-node("proto"){
+node("endurance"){
     echo 'Starting build...'
     stage ('Pre-Clean'){
         preClean()
@@ -34,7 +34,7 @@ node("proto"){
         def logfile_path = "/home/lvuser/dcaf/${logfile}"
         def user = "admin"
         def target_alias = "cRIO9068"
-        def runtime_in_minutes = 10
+        def runtime_in_minutes = 3
         // Deploy config file
         bat "echo y | pscp -pw  ${RIO_PASSWORD} ${WORKSPACE}\\Automated_Builds_Project\\${config_file} ${user}@${target_ip}:/home/lvuser/${config_file}"
         // delete log directory
