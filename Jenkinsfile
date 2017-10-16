@@ -24,9 +24,9 @@ node("endurance"){
     stage ('Temp Directories'){
         bat 'mkdir build_temp'
     }
-    stage('cRIO Build EXE'){
-        lvBuild("Automated_Builds_Project\\Endurance_Test.lvproj", "cRIO9068", "", "2014")
-    }
+    // stage('cRIO Build EXE'){
+        // lvBuild("Automated_Builds_Project\\Endurance_Test.lvproj", "cRIO9068", "", "2014")
+    // }
     stage ('RT Tests'){
         def config_file = "Endurance_Testing_Configuration.pcfg"
         def target_ip = "10.0.54.158"
@@ -35,8 +35,8 @@ node("endurance"){
         def logfile_path = "/home/lvuser/dcaf/${logfile}"
         def user = "admin"
         def target_alias = "cRIO9068"
-		// I'm running this for 15 hour increments for now, and am gradually upping it.
-        def runtime_in_minutes = 60
+		// I'm running this for 30 minute increments for now, and am gradually upping it.
+        def runtime_in_minutes = 30
         // Deploy config file
         bat "echo y | pscp -pw  ${RIO_PASSWORD} ${WORKSPACE}\\Automated_Builds_Project\\${config_file} ${user}@${target_ip}:/home/lvuser/${config_file}"
         // delete log directory
