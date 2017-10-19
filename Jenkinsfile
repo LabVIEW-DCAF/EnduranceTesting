@@ -43,7 +43,7 @@ node("endurance"){
         bat "echo y | plink -pw ${RIO_PASSWORD} ${user}@${target_ip} rm -r -f /home/lvuser/dcaf"
         // Run DCAF
         bat "labview-cli --kill --lv-ver 2014 ${WORKSPACE}\\Automated_Builds_Project\\Execute_Endurance_Test.vi -- ${WORKSPACE} Automated_Builds_Project\\Endurance_Test.lvproj 9068_Main.vi ${target_alias} home:\\lvuser\\${config_file} ${runtime_in_minutes} ${target_ip}"
-        bat "echo y | pscp -pw ${RIO_PASSWORD} ${user}@${target_ip}:${logfile_path} ${WORKSPACE}\\logfile.tdms"
+        bat "echo y | pscp -pw ${RIO_PASSWORD} ${user}@${target_ip}:${logfile_path} ${WORKSPACE}\\build_temp\\logfile.tdms"
     }
     stage ('Post-Clean'){
         postClean()
