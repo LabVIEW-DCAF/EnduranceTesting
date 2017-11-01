@@ -11,7 +11,7 @@ node("endurance"){
         echo 'Updating all installed packages to latest version on internal repo'
         vipmUpdate("2014")
     }
-	// If this change is a pull request and the DIFFING_PIC_REPO variable is set on the jenkins master, diff vis.
+    // If this change is a pull request and the DIFFING_PIC_REPO variable is set on the jenkins master, diff vis.
     if (env.CHANGE_ID && env.DIFFING_PIC_REPO) {
         stage ('Diff VIs'){
             lvDiff("2014")
@@ -30,13 +30,13 @@ node("endurance"){
     stage ('RT Tests'){
         def config_file = "Endurance_Testing_Configuration.pcfg"
         def target_ip = "10.0.54.158"
-		// This gets a .1 appended to whatever name you request after it's saved.
+        // This gets a .1 appended to whatever name you request after it's saved.
         def logfile = "logfile.1.tdms"
         def logfile_path = "/home/lvuser/dcaf/${logfile}"
         def user = "admin"
         def target_alias = "cRIO9068"
-		// I'm running this for 1 day increments for now, and am gradually upping it.
-        def runtime_in_minutes = 1440
+        // I'm running this for 6.5 day increments 
+        def runtime_in_minutes = 9360
         // Deploy config file
         bat "echo y | pscp -pw  ${RIO_PASSWORD} ${WORKSPACE}\\Automated_Builds_Project\\${config_file} ${user}@${target_ip}:/home/lvuser/${config_file}"
         // delete log directory
